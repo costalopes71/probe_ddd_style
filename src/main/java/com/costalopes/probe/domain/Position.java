@@ -1,10 +1,28 @@
 package com.costalopes.probe.domain;
 
-class Position {
+public class Position {
 
 	private Integer x;
 	private Integer y;
-	private boolean occupied; //TODO boolean ou Probe? uma posicao pode ter 0 ou 1 sonda?
+	private Direction direction;
+
+	Position(int x, int y, Direction direction) {
+		this.x = x;
+		this.y = y;
+		this.direction = direction;
+	}
+
+	public Integer getX() {
+		return x;
+	}
+
+	public Integer getY() {
+		return y;
+	}
+
+	public Direction getDirection() {
+		return direction;
+	}
 
 	@Override
 	public boolean equals(Object o) {

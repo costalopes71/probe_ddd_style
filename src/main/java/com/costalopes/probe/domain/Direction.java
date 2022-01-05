@@ -12,6 +12,11 @@ enum Direction {
 		Direction turnLeft() {
 			return WEST;
 		}
+
+		@Override
+		Position moveFoward(Position current, PositionFactory positionFactory) {
+			return positionFactory.create(current.getX(), current.getY() - 1, current.getDirection());
+		}
 	}, SOUTH{
 		@Override
 		Direction turnRight() {
@@ -21,6 +26,11 @@ enum Direction {
 		@Override
 		Direction turnLeft() {
 			return EAST;
+		}
+
+		@Override
+		Position moveFoward(Position current, PositionFactory positionFactory) {
+			return positionFactory.create(current.getX(), current.getY() + 1, current.getDirection());
 		}
 	}, EAST{
 		@Override
@@ -32,6 +42,11 @@ enum Direction {
 		Direction turnLeft() {
 			return NORTH;
 		}
+
+		@Override
+		Position moveFoward(Position current, PositionFactory positionFactory) {
+			return positionFactory.create(current.getX() + 1, current.getY(), current.getDirection());
+		}
 	}, WEST{
 		@Override
 		Direction turnRight() {
@@ -42,9 +57,15 @@ enum Direction {
 		Direction turnLeft() {
 			return SOUTH;
 		}
+
+		@Override
+		Position moveFoward(Position current, PositionFactory positionFactory) {
+			return positionFactory.create(current.getX() - 1, current.getY(), current.getDirection());
+		}
 	};
 
 	abstract Direction turnRight();
 	abstract Direction turnLeft();
+	abstract Position moveFoward(Position current, PositionFactory positionFactory);
 
 }

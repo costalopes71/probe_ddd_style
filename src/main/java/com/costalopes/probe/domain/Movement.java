@@ -2,15 +2,29 @@ package com.costalopes.probe.domain;
 
 enum Movement {
 
-	//TODO o comportamento de mover deveria estar aqui?
-	// talvez um metodo abstract Position doMovement(Position p)? Mas ai position teria que conhecer Direction
-
-	RIGHT('R'), LEFT('L'), FOWARD('F');
+	RIGHT('R') {
+		@Override
+		public Position doMove(Position current, PositionFactory positionFactory) {
+			return positionFactory.create(current.getX(), current.getY(), current.getDirection().turnRight());
+		}
+	}, LEFT('L') {
+		@Override
+		public Position doMove(Position current, PositionFactory positionFactory) {
+			return positionFactory.create(current.getX(), current.getY(), current.getDirection().turnLeft());
+		}
+	}, FOWARD('F') {
+		@Override
+		public Position doMove(Position current, PositionFactory positionFactory) {
+			return current.getDirection().moveFoward(current, positionFactory);
+		}
+	};
 
 	private char m;
 
 	Movement(char m) {
 		this.m = m;
 	}
+
+	public abstract Position doMove(Position current, PositionFactory positionFactory);
 
 }
