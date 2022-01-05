@@ -1,5 +1,7 @@
 package com.costalopes.probe.app;
 
+import com.costalopes.probe.app.to.LandProbeInputModel;
+import com.costalopes.probe.app.to.LandProbeViewModel;
 import org.springframework.stereotype.Service;
 
 @Service

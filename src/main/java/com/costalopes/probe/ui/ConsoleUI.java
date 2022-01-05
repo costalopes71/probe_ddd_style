@@ -1,6 +1,6 @@
 package com.costalopes.probe.ui;
 
-import com.costalopes.probe.app.LandProbeInputModel;
+import com.costalopes.probe.app.to.LandProbeInputModel;
 import com.costalopes.probe.app.LandProbeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
